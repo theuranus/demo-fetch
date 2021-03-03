@@ -1,7 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import logo from "./logo.svg";
+import "./App.css";
 
 function App() {
+  useEffect(() => {
+    fetch("...", {
+      method: "PUT",
+      headers: {
+        Authorization: "Bearer ",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: "Test CORS",
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => console.log("Success", res))
+      .catch((err) => console.error("Error: ", err));
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
